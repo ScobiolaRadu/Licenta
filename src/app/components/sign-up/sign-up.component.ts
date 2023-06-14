@@ -4,9 +4,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 
-export function passwordMatchValidator(): ValidatorFn{
+export function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl):
-  ValidationErrors | null => {
+    ValidationErrors | null => {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
 
@@ -29,10 +29,10 @@ export class SignUpComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-     
-  }, {validators: passwordMatchValidator()});
 
-  constructor(private authService: AuthenticationService, 
+  }, { validators: passwordMatchValidator() });
+
+  constructor(private authService: AuthenticationService,
     private router: Router,
     private toast: HotToastService,) { }
 
@@ -54,23 +54,21 @@ export class SignUpComponent implements OnInit {
   get confirmPassword() {
     return this.signUpForm.get('confirmPassword');
   }
-  
-  submit()
-  {
-    const{name, email, password} = this.signUpForm.value;
-    if(!this.signUpForm.valid || !email || !password || !name)
+
+  submit() {
+    const { name, email, password } = this.signUpForm.value;
+    if (!this.signUpForm.valid || !email || !password || !name) {
       return;
+    }
 
     this.authService.signUp(name, email, password).pipe(
       this.toast.observe({
-        loading: 'Signing in...',
-        success: 'Account created successfully',
-        error: ({message}) => `${message}`
+        loading: 'Signing up...',
+        success: 'Account created successfully. Please verify your email address.',
+        error: ({ message }) => `Sign-up failed: ${message}`,
       })
-    ).subscribe(()=>{
-      this.router.navigate(['/home']);
+    ).subscribe(() => {
+      this.signUpForm.reset();
     });
   }
-
-
 }

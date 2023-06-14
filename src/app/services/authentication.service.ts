@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, updateProfile} from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { from } from 'rxjs';
 import { authState } from 'rxfire/auth';
 import { createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { switchMap } from 'rxjs';
+import { sendEmailVerification } from '@angular/fire/auth';
+import { User, UserCredential } from 'firebase/auth';
+import { Observable, of, timer } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +17,53 @@ export class AuthenticationService {
 
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth) { }
+  constructor(private auth: Auth,
+    private router: Router) { }
 
   login(username: string, password: string) {
-    return from(signInWithEmailAndPassword(this.auth, username, password));
+    return from(signInWithEmailAndPassword(this.auth, username, password)).pipe(
+      switchMap((userCredential: UserCredential) => {
+        const user: User = userCredential.user;
+        if (user.emailVerified) {
+          return of(user);
+        } else {
+          throw new Error('Please verify your email address to log in.');
+        }
+      })
+    );
+  }
+
+  private waitForEmailVerification(user: User): Observable<User> {
+    return this.currentUser$.pipe(
+      filter((currentUser: User | null): currentUser is User => currentUser !== null),
+      switchMap((currentUser: User) => {
+        if (currentUser.emailVerified) {
+          return of(currentUser);
+        } else {
+          return timer(1000).pipe(
+            switchMap(() => this.waitForEmailVerification(user))
+          );
+        }
+      })
+    );
   }
 
   signUp(name: string, email: string, password: string) {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
-      switchMap(({user}) => updateProfile(user, {displayName: name}))
+      switchMap(({ user }) => {
+        return from(updateProfile(user, { displayName: name })).pipe(
+          switchMap(() => sendEmailVerification(user)),
+          tap(() => {
+            this.logout();
+            this.router.navigate(['/login']);
+          })
+        );
+      })
     );
   }
 
-  logout(){
+
+  logout() {
     return from(this.auth.signOut());
   }
 }
