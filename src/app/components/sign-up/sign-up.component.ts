@@ -29,12 +29,13 @@ export class SignUpComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-
   }, { validators: passwordMatchValidator() });
 
-  constructor(private authService: AuthenticationService,
+  constructor(
+    private authService: AuthenticationService,
     private router: Router,
-    private toast: HotToastService,) { }
+    private toast: HotToastService
+  ) { }
 
   ngOnInit(): void {
   }

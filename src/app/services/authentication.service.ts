@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { from } from 'rxjs';
 import { authState } from 'rxfire/auth';
 import { createUserWithEmailAndPassword } from '@angular/fire/auth';
@@ -14,11 +14,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth,
-    private router: Router) { }
+  constructor(private auth: Auth, private router: Router) { }
 
   login(username: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, username, password)).pipe(
@@ -33,6 +31,23 @@ export class AuthenticationService {
     );
   }
 
+  loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return from(signInWithPopup(this.auth, provider)).pipe(
+      switchMap((userCredential: UserCredential) => {
+        const user: User = userCredential.user;
+        return of(user);
+      }),
+      tap(() => {
+        this.router.navigate(['/home']);
+      })
+    );
+  }
+
+  forgotPassword(email: string) {
+    return from(sendPasswordResetEmail(this.auth, email));
+  }
+
   private waitForEmailVerification(user: User): Observable<User> {
     return this.currentUser$.pipe(
       filter((currentUser: User | null): currentUser is User => currentUser !== null),
@@ -40,9 +55,7 @@ export class AuthenticationService {
         if (currentUser.emailVerified) {
           return of(currentUser);
         } else {
-          return timer(1000).pipe(
-            switchMap(() => this.waitForEmailVerification(user))
-          );
+          return timer(1000).pipe(switchMap(() => this.waitForEmailVerification(user)));
         }
       })
     );
@@ -61,7 +74,6 @@ export class AuthenticationService {
       })
     );
   }
-
 
   logout() {
     return from(this.auth.signOut());

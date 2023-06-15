@@ -25,6 +25,7 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { LessonlistComponent } from './components/lessonlist/lessonlist.component';
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     LessonComponent,
     LessonlistComponent,
     TestComponent,
+    PasswordResetComponent,
   ],
   imports: [
     BrowserModule,
