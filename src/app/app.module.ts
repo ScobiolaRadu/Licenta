@@ -26,6 +26,7 @@ import { LessonlistComponent } from './components/lessonlist/lessonlist.componen
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { ResendConfirmComponent } from './components/resend-confirm/resend-confirm.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     LessonlistComponent,
     TestComponent,
     PasswordResetComponent,
+    ResendConfirmComponent,
   ],
   imports: [
     BrowserModule,

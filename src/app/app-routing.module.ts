@@ -9,6 +9,7 @@ import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angula
 import { LessonComponent } from './components/lesson/lesson.component';
 import { TestComponent } from './components/test/test.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { ResendConfirmComponent } from './components/resend-confirm/resend-confirm.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home']);
@@ -66,7 +67,13 @@ const routes: Routes = [
     path: 'password-reset',
     component: PasswordResetComponent,
     ...canActivate(redirectToHome)
-  }
+  },
+
+  {
+    path: 'resend-confirm',
+    component: ResendConfirmComponent,
+    ...canActivate(redirectToHome)
+  },
 ];
 
 @NgModule({

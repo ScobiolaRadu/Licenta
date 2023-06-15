@@ -25,6 +25,9 @@ export class AuthenticationService {
         if (user.emailVerified) {
           return of(user);
         } else {
+          if (user && user.metadata && user.metadata.creationTime && +user.metadata.creationTime + 60< Date.now()) {
+            this.router.navigate(['/resend-confirm']);
+          }
           throw new Error('Please verify your email address to log in.');
         }
       })
@@ -71,6 +74,15 @@ export class AuthenticationService {
             this.router.navigate(['/login']);
           })
         );
+      })
+    );
+  }
+
+  resendConfirmationEmail() {
+    return this.currentUser$.pipe(
+      filter((user: User | null): user is User => user !== null),
+      switchMap((user: User) => {
+        return from(sendEmailVerification(user));
       })
     );
   }
