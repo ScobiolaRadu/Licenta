@@ -1,26 +1,26 @@
 <div class="form-container mat-elevation-z5">
     <h1>Login</h1>
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
-      <mat-form-field>
-        <input matInput placeholder="Email address" formControlName="email">
-        <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
-        <mat-error *ngIf="email?.errors?.['email']">Please enter a valid email address</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Password" formControlName="password" type="password">
-        <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
-        <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long</mat-error>
-      </mat-form-field>
-      <div class="center margin-top">
-        <button mat-raised-button color="primary" type="submit">Login</button>
-        <button mat-raised-button color="warn" type="button" (click)="forgotPassword()">Forgot Password</button>
-      </div>
-      <span class="center margin-top">New to Triolingo?<a class="sign-up" routerLink="/sign-up">&nbsp;Sign up!</a></span>
-      <div class="center margin-top">
-        <button mat-raised-button color="primary" type="button" (click)="signInWithGoogle()">
-          <mat-icon>google</mat-icon> Login with Google
-        </button>
-      </div>
+        <mat-form-field>
+            <input matInput placeholder="Email address" formControlName="email">
+            <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">Please enter a valid email address</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Password" formControlName="password" type="password">
+            <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+            <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long</mat-error>
+        </mat-form-field>
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit">Login</button>
+            <button mat-raised-button color="warn" type="button" (click)="forgotPassword()">Forgot Password</button>
+        </div>
+        <span class="center margin-top">New to Triolingo?<a class="sign-up" routerLink="/sign-up">&nbsp;Sign
+                up!</a></span>
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="button" (click)="signInWithGoogle()">
+                Login with Google
+            </button>
+        </div>
     </form>
-  </div>
-  
+</div>
