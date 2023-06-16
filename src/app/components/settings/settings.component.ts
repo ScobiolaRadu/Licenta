@@ -12,7 +12,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class SettingsComponent {
   user$ = this.authService.currentUser$;
-  newNativeLanguage: string = '';
+  newNativeLanguage: string = 'English';
   newLanguageToLearn: string = '';
   photoURL: string = '';
   selectedFile: File | null = null;
@@ -79,10 +79,10 @@ export class SettingsComponent {
   }
 
   changeNativeLanguage() {
-    console.log('New native language:', this.newNativeLanguage);
+
   }
 
   changeLanguageToLearn() {
-    console.log('New language to learn:', this.newLanguageToLearn);
+
   }
 }

@@ -1,34 +1,40 @@
 <div class="form-container mat-elevation-z5 text-center">
-    <h1>User Profile</h1>
-    <div class="profile-image">
-      <img
-        width="120"
-        height="120"
-        [src]="(user$ | async)?.photoURL ?? 'assets/images/image-placeholder.png'"
-      />
-    </div>
-    <button mat-mini-fab (click)="inputField.click()">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <input #inputField type="file" hidden (change)="selectImage($event)" />
-    <button mat-raised-button color="primary" (click)="onUploadButtonClick()">Upload</button>
-      
-    <button mat-raised-button color="primary" (click)="changePassword()">Change Password</button>
-  
-    <h3>Change Native Language</h3>
-    <input
-      type="text"
-      [(ngModel)]="newNativeLanguage"
-      placeholder="New Native Language"
+  <h1>User Profile</h1>
+  <div class="profile-image">
+    <img
+      width="120"
+      height="120"
+      [src]="(user$ | async)?.photoURL ?? 'assets/images/image-placeholder.png'"
     />
-    <button (click)="changeNativeLanguage()">Save</button>
-  
-    <h3>Change Language to Learn</h3>
-    <input
-      type="text"
-      [(ngModel)]="newLanguageToLearn"
-      placeholder="New Language to Learn"
-    />
-    <button (click)="changeLanguageToLearn()">Save</button>
   </div>
-  
+  <button mat-mini-fab (click)="inputField.click()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <input #inputField type="file" hidden (change)="selectImage($event)" />
+  <button mat-raised-button color="primary" (click)="onUploadButtonClick()">
+    Upload
+  </button>
+
+  <button mat-raised-button color="primary" (click)="changePassword()">
+    Change Password
+  </button>
+
+  <h3>Pick Native Language</h3>
+  <select [(ngModel)]="newNativeLanguage">
+    <option value="English">English</option>
+    <option value="French">French</option>
+    <option value="Romanian">Romanian</option>
+  </select>
+  <button (click)="changeNativeLanguage()">Save</button>
+
+  <h3>Pick Language to Learn</h3>
+  <select [(ngModel)]="newLanguageToLearn">
+    <option value=""></option>
+    <!-- Empty option to represent no language selected -->
+    <option value="English">English</option>
+    <option value="French">French</option>
+    <option value="Romanian">Romanian</option>
+  </select>
+  <button (click)="changeLanguageToLearn()">Save</button>
+  <div>Points acumulated this week: 0</div>
+</div>

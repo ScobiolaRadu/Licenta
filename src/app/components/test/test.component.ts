@@ -30,7 +30,6 @@ export class TestComponent implements OnInit {
     {text: 'Father', text2: 'tată'},
     {text: 'Brother', text2: 'frate'},
     {text: 'Sister', text2: 'soră'},
-    // Add more values as needed
   ];
   displayText: string = '';
   inputText: string = '';
@@ -68,7 +67,4 @@ export class TestComponent implements OnInit {
       this.message = 'Incorrect';
     }
   }
-  
-  
-  
 }
