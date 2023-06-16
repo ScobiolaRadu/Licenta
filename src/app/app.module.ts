@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,9 @@ import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { ResendConfirmComponent } from './components/resend-confirm/resend-confirm.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,7 @@ import { ResendConfirmComponent } from './components/resend-confirm/resend-confi
     TestComponent,
     PasswordResetComponent,
     ResendConfirmComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,11 +58,14 @@ import { ResendConfirmComponent } from './components/resend-confirm/resend-confi
     MatButtonModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
     HotToastModule.forRoot(),
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

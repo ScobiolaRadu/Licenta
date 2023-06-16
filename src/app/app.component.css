@@ -5,3 +5,9 @@ mat-toolbar{
 .content{
     padding: 32px;
 }
+
+
+.profile-image{
+    border-radius: 100%;
+    margin-right: 8px;
+}

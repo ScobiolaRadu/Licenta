@@ -1,9 +1,16 @@
-.sign-up{
-    color: rgb(63,81,181);
-    text-decoration: none;
-    font-weight: bold;
+.sign-up {
+  color: rgb(63, 81, 181);
+  text-decoration: none;
+  font-weight: bold;
 }
 
-button{
-    margin-inline: 0.5vw;
+button {
+  margin-inline: 0.5vw;
+}
+
+.forgot {
+  color: rgb(63, 81, 181);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
 }

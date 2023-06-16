@@ -1,22 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, updateProfile, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
-import { from } from 'rxjs';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  updateProfile,
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
+  UserInfo,
+} from '@angular/fire/auth';
+import { Observable, from } from 'rxjs';
 import { authState } from 'rxfire/auth';
 import { createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { switchMap } from 'rxjs';
 import { sendEmailVerification } from '@angular/fire/auth';
 import { User, UserCredential } from 'firebase/auth';
-import { Observable, of, timer } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { concatMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth, private router: Router) { }
+  constructor(private auth: Auth, private router: Router) {}
+
+  getCurrentUser(): User | null {
+    return this.auth.currentUser;
+  }
 
   login(username: string, password: string) {
     return from(signInWithEmailAndPassword(this.auth, username, password)).pipe(
@@ -25,9 +37,6 @@ export class AuthenticationService {
         if (user.emailVerified) {
           return of(user);
         } else {
-          if (user && user.metadata && user.metadata.creationTime && +user.metadata.creationTime + 60< Date.now()) {
-            this.router.navigate(['/resend-confirm']);
-          }
           throw new Error('Please verify your email address to log in.');
         }
       })
@@ -51,21 +60,10 @@ export class AuthenticationService {
     return from(sendPasswordResetEmail(this.auth, email));
   }
 
-  private waitForEmailVerification(user: User): Observable<User> {
-    return this.currentUser$.pipe(
-      filter((currentUser: User | null): currentUser is User => currentUser !== null),
-      switchMap((currentUser: User) => {
-        if (currentUser.emailVerified) {
-          return of(currentUser);
-        } else {
-          return timer(1000).pipe(switchMap(() => this.waitForEmailVerification(user)));
-        }
-      })
-    );
-  }
-
   signUp(name: string, email: string, password: string) {
-    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
       switchMap(({ user }) => {
         return from(updateProfile(user, { displayName: name })).pipe(
           switchMap(() => sendEmailVerification(user)),
@@ -78,13 +76,14 @@ export class AuthenticationService {
     );
   }
 
-  resendConfirmationEmail() {
-    return this.currentUser$.pipe(
-      filter((user: User | null): user is User => user !== null),
-      switchMap((user: User) => {
-        return from(sendEmailVerification(user));
-      })
-    );
+  updateProfileData(profileData: Partial<UserInfo>): Observable<any>{
+    const user = this.auth.currentUser;
+    return of(user).pipe(
+      concatMap(user => {
+          if(!user) throw new Error('Not Authenticated');
+
+          return updateProfile(user, profileData);
+      }))
   }
 
   logout() {

@@ -21,5 +21,10 @@ export class AppComponent {
         this.router.navigate(['']);
     });
   }
+
+  settings()
+  {
+    this.router.navigate(['settings']);
+  }
 } 
     

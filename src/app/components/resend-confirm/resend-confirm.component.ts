@@ -13,15 +13,15 @@ export class ResendConfirmComponent {
     private router: Router
   ) {}
 
-  resendEmail() {
-    // Call the method to resend the confirmation email
-    this.authService.resendConfirmationEmail().subscribe(() => {
-      // Handle success, e.g., show a success message
-      console.log('Confirmation email resent successfully.');
-    });
-  }
+  // resendEmail() {
+  //   // Call the method to resend the confirmation email
+  //   this.authService.resendConfirmationEmail().subscribe(() => {
+  //     // Handle success, e.g., show a success message
+  //     console.log('Confirmation email resent successfully.');
+  //   });
+  // }
 
-  goToHomePage() {
-    this.router.navigate(['/home']);
-  }
+  // goToHomePage() {
+  //   this.router.navigate(['/home']);
+  // }
 }
