@@ -4,6 +4,7 @@ import { concatMap, take } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ImageUploadService } from 'src/app/services/image-upload.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -16,6 +17,14 @@ export class SettingsComponent {
   newLanguageToLearn: string = '';
   photoURL: string = '';
   selectedFile: File | null = null;
+
+  profileForm = new FormGroup({
+    uid: new FormControl(''),
+    displayName: new FormControl(''),
+    email: new FormControl(''),
+    photoURL: new FormControl(''),
+    points: new FormControl(''),
+  })
 
   constructor(
     private authService: AuthenticationService,

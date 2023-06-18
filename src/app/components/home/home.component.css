@@ -14,4 +14,11 @@
     text-align: center;
     padding: 32px;
     font-size: larger;
+    display: flex;
+    flex-direction: column;
+}
+
+.content button{
+    margin: 8px;
+    padding: 16px;
 }

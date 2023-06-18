@@ -1,33 +1,32 @@
 <div class="form-container mat-elevation-z5 text-center">
   <h1>User Profile</h1>
   <div class="profile-image">
-    <img
-      width="120"
-      height="120"
-      [src]="(user$ | async)?.photoURL ?? 'assets/images/image-placeholder.png'"
-    />
+    <img width="120" height="120" [src]="(user$ | async)?.photoURL ?? 'assets/images/image-placeholder.png'" />
   </div>
   <button mat-mini-fab (click)="inputField.click()">
     <mat-icon>edit</mat-icon>
   </button>
   <input #inputField type="file" hidden (change)="selectImage($event)" />
-  <button mat-raised-button color="primary" (click)="onUploadButtonClick()">
-    Upload
-  </button>
 
-  <button mat-raised-button color="primary" (click)="changePassword()">
-    Change Password
-  </button>
+  <div class="options">
+    <button mat-raised-button color="primary" (click)="onUploadButtonClick()">
+      Upload
+    </button>
 
-  <h3>Pick Native Language</h3>
+    <button mat-raised-button color="primary" (click)="changePassword()">
+      Change Password
+    </button>
+  </div>
+
+  <div>Pick Native Language</div>
   <select [(ngModel)]="newNativeLanguage">
     <option value="English">English</option>
     <option value="French">French</option>
     <option value="Romanian">Romanian</option>
   </select>
-  <button (click)="changeNativeLanguage()">Save</button>
+  <button class="save" mat-raised-button color="primary" (click)="changeNativeLanguage()">Save</button>
 
-  <h3>Pick Language to Learn</h3>
+  <div>Pick Language to Learn</div>
   <select [(ngModel)]="newLanguageToLearn">
     <option value=""></option>
     <!-- Empty option to represent no language selected -->
@@ -35,6 +34,6 @@
     <option value="French">French</option>
     <option value="Romanian">Romanian</option>
   </select>
-  <button (click)="changeLanguageToLearn()">Save</button>
-  <div>Points acumulated this week: 0</div>
+  <button class="save" mat-raised-button color="primary" (click)="changeLanguageToLearn()">Save</button>
+  <div>Points acumulated: 200</div>
 </div>

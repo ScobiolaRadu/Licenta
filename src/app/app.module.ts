@@ -31,6 +31,7 @@ import { ResendConfirmComponent } from './components/resend-confirm/resend-confi
 import { SettingsComponent } from './components/settings/settings.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
     HotToastModule.forRoot(),
     MatMenuModule,
     MatSidenavModule,
