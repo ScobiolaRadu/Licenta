@@ -1,25 +1,45 @@
 <div class="lesson-container">
-    <div class="lesson-header">
-      {{ lessonTitle }}
-    </div>
+  <div class="lesson-header">
+    {{ lessonTitle }}
   </div>
+</div>
 
-  <div class="slideshow">
-    <div class="slide" [ngStyle]="{'display': currentSlideIndex === index ? 'block' : 'none'}" *ngFor="let slide of slides; let index = index">
-      <div class="slide-content">
-        <p class="text">{{slide.text}}</p>
-        <img class="image" [src]="slide.imageUrl">
-        <p class="text-2">{{slide.text2}}</p>
-      </div>
+<div class="menu-container">
+  <ul class="difficulty-categories">
+    <li
+      (click)="toggleBegginer()"
+      class="difficulty-category"
+      style="text-decoration: none; color: white"
+    >
+      Begginer
+    </li>
+    <div *ngIf="showBegginer">
+      <li class="lesson" *ngFor="let lesson of lessons">
+        <a
+          [routerLink]="lesson.url"
+          style="text-decoration: none; color: white"
+        >
+          <div class="lesson-icon">
+            <mat-icon>{{ lesson.icon }}</mat-icon>
+          </div>
+          <div class="lesson-name">
+            {{ lesson.title }}
+          </div>
+        </a>
+      </li>
     </div>
-    <div class="slide-nav">
-      <button (click)="previousSlide()" [disabled]="currentSlideIndex === 0">&lt;</button>
-      <button (click)="nextSlide()" [disabled]="currentSlideIndex === slides.length - 1">&gt;</button>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
+  </ul>
+</div>
+
+<div class="table-container">
+  <table class="translation-table">
+    <tr *ngFor="let slide of slides">
+      <td class="native">
+        {{ slide.native }}
+      </td>
+      <td class="translation">
+        {{ slide.translation }}
+      </td>
+    </tr>
+  </table>
+</div>

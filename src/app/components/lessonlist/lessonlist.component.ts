@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
+import { Lesson, LessonService } from 'src/app/services/lessonservice.service';
 
 @Component({
   selector: 'app-lessonlist',
   templateUrl: './lessonlist.component.html',
-  styleUrls: ['./lessonlist.component.css']
+  styleUrls: ['./lessonlist.component.css'],
 })
 export class LessonlistComponent {
-  lessons = [
-    {title: 'Animals', icon: 'pets', url: '/lesson/Animals'},
-    {title: 'Colors', icon: 'palette', url: '/lesson/Colors'},
-    {title: 'Numbers', icon: 'numbers',url: '/lesson/Numbers'},
-    {title: 'People', icon:'people', url: '/lesson/People'},
-  ];
+  lessons: Lesson[] = [];
+  constructor(private lessonService: LessonService) {
+    this.lessons = lessonService.getLessons();
+  }
+
+  showBegginer = false;
+
+  toggleBegginer() {
+    this.showBegginer = !this.showBegginer;
+  }
 }

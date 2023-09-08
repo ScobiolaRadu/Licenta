@@ -1,19 +1,20 @@
-
-  <h1 class="welcome" *ngIf="user$ | async as user">
-    Welcome to Triolingo, {{user.displayName}}!
-  </h1>
-  <!-- <img class="mascot" src="/assets/mascota2.png"> -->
-  <!-- <div class="content">
+<h1 class="welcome" *ngIf="user$ | async as user">
+  Welcome to Triolingo, {{ user.displayName }}!
+</h1>
+<!-- <img class="mascot" src="/assets/mascota2.png"> -->
+<!-- <div class="content">
     We have prepared some lessons for you!
   </div> -->
 
-  <div class="content">
-    <button mat-raised-button color="primary"> Learning materials </button>
-    <button mat-raised-button color="primary"> Tests </button>
-    <button mat-raised-button color="primary"> Leaderboard </button>
-  </div>
-  <!-- <app-lessonlist></app-lessonlist> -->
+<div class="content">
+  <button mat-raised-button color="primary" routerLink="/lessons">
+    Learning materials
+  </button>
+  <button mat-raised-button color="primary" routerLink="/tests">Tests</button>
+  <button mat-raised-button color="primary">Leaderboard</button>
+</div>
+<!-- <app-lessonlist></app-lessonlist> -->
 
-  <!-- <div class="content">
+<!-- <div class="content">
     Feeling confident? <a routerLink="/test" style="color:black; text-decoration: none;">Take a test!</a>
   </div> -->

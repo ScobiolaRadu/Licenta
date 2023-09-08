@@ -32,6 +32,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { TestlistComponent } from './components/testlist/testlist.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     PasswordResetComponent,
     ResendConfirmComponent,
     SettingsComponent,
+    TestlistComponent,
   ],
   imports: [
     BrowserModule,

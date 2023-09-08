@@ -1,15 +1,22 @@
 <ul class="lesson-container">
+  <li
+    (click)="toggleBegginer()"
+    class="lesson-category"
+    style="text-decoration: none; color: white"
+  >
+    Begginer
+  </li>
+  <div *ngIf="showBegginer">
     <li class="lesson" *ngFor="let lesson of lessons">
-        <a [routerLink]="lesson.url" style="text-decoration: none; color: white;">
-      <div class="lesson-icon">
-        <mat-icon>{{lesson.icon}}</mat-icon>
-      </div>
-      <div class="lesson-name">
-        {{ lesson.title }}
-      </div>
-    </a>
+      <a [routerLink]="lesson.url" style="text-decoration: none; color: white">
+        <div class="lesson-icon">
+          <mat-icon>{{ lesson.icon }}</mat-icon>
+        </div>
+        <div class="lesson-name">
+          {{ lesson.title }}
+        </div>
+      </a>
     </li>
-  </ul>
+  </div>
+</ul>
 <router-outlet></router-outlet>
-
-  
