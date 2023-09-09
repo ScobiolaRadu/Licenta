@@ -28,4 +28,19 @@ export class StorageService {
       })
     );
   }
+
+  updateUserPointsByEmail(email: string, newPoints: number): void {
+    const userRef = this.db.collection('users').doc(email);
+
+    userRef
+      .update({
+        points: newPoints,
+      })
+      .then(() => {
+        console.log(`Points updated for ${email}.`);
+      })
+      .catch((error) => {
+        console.error(`Error updating points for ${email}:`, error);
+      });
+  }
 }

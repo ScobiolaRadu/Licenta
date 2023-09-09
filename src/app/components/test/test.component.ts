@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { StorageService } from 'src/app/services/storageservice.service';
 
 @Component({
   selector: 'app-test',
@@ -46,8 +48,14 @@ export class TestComponent implements OnInit {
   array: any[] = [];
   testLength: number = 0;
   ended = false;
+  points: number = 0;
+  previousPoints: number = 0;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private storageService: StorageService,
+    private authService: AuthenticationService
+  ) {}
 
   randomIndex(array: any[]) {
     let availableSlides = this.array.filter(
@@ -72,6 +80,11 @@ export class TestComponent implements OnInit {
         break;
     }
     this.getRandomSlide(this.array);
+    this.storageService
+      .getUserPointsByEmail(this.authService.getCurrentUser()?.email || '')
+      .subscribe((points) => {
+        this.previousPoints = points || 0;
+      });
   }
 
   getRandomSlide(array: any[]) {
@@ -89,6 +102,7 @@ export class TestComponent implements OnInit {
     ) {
       this.color = 'green';
       this.message = 'Correct';
+      this.points += 10;
       if (this.testLength !== 2)
         setTimeout(() => {
           this.getRandomSlide(this.array);
@@ -100,6 +114,10 @@ export class TestComponent implements OnInit {
           this.message = '';
           this.inputText = '';
           this.ended = true;
+          this.storageService.updateUserPointsByEmail(
+            this.authService.getCurrentUser()?.email || '',
+            this.points + this.previousPoints
+          );
         }, 500);
     } else {
       this.color = 'red';
@@ -118,6 +136,10 @@ export class TestComponent implements OnInit {
           this.message = '';
           this.inputText = '';
           this.ended = true;
+          this.storageService.updateUserPointsByEmail(
+            this.authService.getCurrentUser()?.email || '',
+            this.points + this.previousPoints
+          );
         }, 2000);
     }
   }

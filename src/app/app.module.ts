@@ -33,6 +33,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { TestlistComponent } from './components/testlist/testlist.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TestlistComponent } from './components/testlist/testlist.component';
     ResendConfirmComponent,
     SettingsComponent,
     TestlistComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,

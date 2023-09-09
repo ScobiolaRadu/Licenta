@@ -16,6 +16,7 @@ import { PasswordResetComponent } from './components/password-reset/password-res
 import { SettingsComponent } from './components/settings/settings.component';
 import { LessonlistComponent } from './components/lessonlist/lessonlist.component';
 import { TestlistComponent } from './components/testlist/testlist.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home']);
@@ -95,6 +96,11 @@ const routes: Routes = [
   {
     path: 'tests/advanced',
     component: TestComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'leaderboard',
+    component: LeaderboardComponent,
     ...canActivate(redirectToLogin),
   },
 ];

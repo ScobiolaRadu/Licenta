@@ -35,10 +35,14 @@ export class SettingsComponent {
     private imageUploadService: ImageUploadService,
     private toast: HotToastService,
     private storageService: StorageService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.storageService
       .getUserPointsByEmail(this.authService.getCurrentUser()?.email || '')
-      .subscribe((points) => {});
+      .subscribe((points) => {
+        this.points = points || 0;
+      });
   }
 
   selectImage(event: any) {

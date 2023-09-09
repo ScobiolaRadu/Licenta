@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <th>Account Name</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of leaderboardData">
+      <td>{{ entry.name }}</td>
+      <td>{{ entry.points }}</td>
+    </tr>
+  </tbody>
+</table>

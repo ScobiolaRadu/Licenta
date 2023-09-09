@@ -2,7 +2,7 @@
 <div>{{ displayText }}</div>
 <input *ngIf="!ended" type="text" [(ngModel)]="inputText" />
 <button *ngIf="!ended" (click)="checkAnswer()">Check</button>
-<div *ngIf="ended">You have scored amount points!</div>
+<div *ngIf="ended">You have scored {{ points }} points!</div>
 <button *ngIf="ended" routerLink="/tests">Back to tests</button>
 
 <div [ngStyle]="{ color: color }">{{ message }}</div>

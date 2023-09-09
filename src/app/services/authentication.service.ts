@@ -67,6 +67,7 @@ export class AuthenticationService {
   signUp(name: string, email: string, password: string) {
     this.db.collection('users').doc(email).set({
       email: email,
+      name: name,
       points: 0,
     });
     console.log('User added to database');
