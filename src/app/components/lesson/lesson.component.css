@@ -17,6 +17,7 @@
   display: flex;
   justify-content: center;
   width: 60vw;
+  margin-right: 5vw;
 }
 
 .translation-table {
