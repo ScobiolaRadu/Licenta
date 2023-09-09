@@ -1,14 +1,21 @@
-<table>
-  <thead>
-    <tr>
-      <th>Account Name</th>
-      <th>Points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let entry of leaderboardData">
-      <td>{{ entry.name }}</td>
-      <td>{{ entry.points }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="table-container">
+    <table *ngIf="user$ | async as user">
+      <thead>
+        <tr class="table-head">
+          <th>Account Name</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let entry of leaderboardData"
+          [ngClass]="{ highlighted: entry.name === user.displayName }"
+        >
+          <td class="name">{{ entry.name }}</td>
+          <td class="points">{{ entry.points }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

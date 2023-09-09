@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10vh;
+}
+
+.table-container {
+  display: flex;
+  width: 60vw;
+  justify-content: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.name,
+.points {
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.table-head {
+  background-color: #ffffff !important;
+}
+
+.name {
+  width: 50%;
+}
+
+.points {
+  width: 50%;
+}
+
+.points:last-child {
+  border-right: none;
+}
+
+.highlighted {
+  color: #5c6bc0;
+}
