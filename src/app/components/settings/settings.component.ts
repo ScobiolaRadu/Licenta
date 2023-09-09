@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { concatMap, take } from 'rxjs';
+import { Observable, concatMap, map, take } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ImageUploadService } from 'src/app/services/image-upload.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { StorageService } from 'src/app/services/storageservice.service';
 
 @Component({
   selector: 'app-settings',
@@ -17,6 +20,7 @@ export class SettingsComponent {
   newLanguageToLearn: string = '';
   photoURL: string = '';
   selectedFile: File | null = null;
+  points: number = 0;
 
   profileForm = new FormGroup({
     uid: new FormControl(''),
@@ -24,13 +28,18 @@ export class SettingsComponent {
     email: new FormControl(''),
     photoURL: new FormControl(''),
     points: new FormControl(''),
-  })
+  });
 
   constructor(
     private authService: AuthenticationService,
     private imageUploadService: ImageUploadService,
-    private toast: HotToastService
-  ) {}
+    private toast: HotToastService,
+    private storageService: StorageService
+  ) {
+    this.storageService
+      .getUserPointsByEmail(this.authService.getCurrentUser()?.email || '')
+      .subscribe((points) => {});
+  }
 
   selectImage(event: any) {
     this.selectedFile = event.target.files[0];
@@ -87,11 +96,7 @@ export class SettingsComponent {
     }
   }
 
-  changeNativeLanguage() {
+  changeNativeLanguage() {}
 
-  }
-
-  changeLanguageToLearn() {
-
-  }
+  changeLanguageToLearn() {}
 }

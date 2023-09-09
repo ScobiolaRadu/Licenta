@@ -17,14 +17,18 @@ import { User, UserCredential } from 'firebase/auth';
 import { of } from 'rxjs';
 import { concatMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   currentUser$ = authState(this.auth);
-
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(
+    private auth: Auth,
+    private router: Router,
+    private db: AngularFirestore
+  ) {}
 
   getCurrentUser(): User | null {
     return this.auth.currentUser;
@@ -61,6 +65,11 @@ export class AuthenticationService {
   }
 
   signUp(name: string, email: string, password: string) {
+    this.db.collection('users').doc(email).set({
+      email: email,
+      points: 0,
+    });
+    console.log('User added to database');
     return from(
       createUserWithEmailAndPassword(this.auth, email, password)
     ).pipe(
@@ -76,14 +85,15 @@ export class AuthenticationService {
     );
   }
 
-  updateProfileData(profileData: Partial<UserInfo>): Observable<any>{
+  updateProfileData(profileData: Partial<UserInfo>): Observable<any> {
     const user = this.auth.currentUser;
     return of(user).pipe(
-      concatMap(user => {
-          if(!user) throw new Error('Not Authenticated');
+      concatMap((user) => {
+        if (!user) throw new Error('Not Authenticated');
 
-          return updateProfile(user, profileData);
-      }))
+        return updateProfile(user, profileData);
+      })
+    );
   }
 
   logout() {

@@ -1,7 +1,11 @@
 <div class="form-container mat-elevation-z5 text-center">
   <h1>User Profile</h1>
   <div class="profile-image">
-    <img width="120" height="120" [src]="(user$ | async)?.photoURL ?? 'assets/images/image-placeholder.png'" />
+    <img
+      width="120"
+      height="120"
+      [src]="(user$ | async)?.photoURL ?? './assets/image-placeholder.png'"
+    />
   </div>
   <button mat-mini-fab (click)="inputField.click()">
     <mat-icon>edit</mat-icon>
@@ -24,7 +28,14 @@
     <option value="French">French</option>
     <option value="Romanian">Romanian</option>
   </select>
-  <button class="save" mat-raised-button color="primary" (click)="changeNativeLanguage()">Save</button>
+  <button
+    class="save"
+    mat-raised-button
+    color="primary"
+    (click)="changeNativeLanguage()"
+  >
+    Save
+  </button>
 
   <div>Pick Language to Learn</div>
   <select [(ngModel)]="newLanguageToLearn">
@@ -34,6 +45,13 @@
     <option value="French">French</option>
     <option value="Romanian">Romanian</option>
   </select>
-  <button class="save" mat-raised-button color="primary" (click)="changeLanguageToLearn()">Save</button>
-  <div>Points acumulated: 200</div>
+  <button
+    class="save"
+    mat-raised-button
+    color="primary"
+    (click)="changeLanguageToLearn()"
+  >
+    Save
+  </button>
+  <div>Points acumulated: {{ points }}</div>
 </div>
