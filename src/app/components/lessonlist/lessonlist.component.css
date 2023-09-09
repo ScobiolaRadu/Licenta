@@ -19,6 +19,10 @@
   margin-bottom: 20px;
 }
 
+.lesson-category:hover {
+  cursor: pointer;
+}
+
 .lesson {
   width: 20vw;
   text-align: center;

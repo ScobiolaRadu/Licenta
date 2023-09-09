@@ -4,42 +4,76 @@
   </div>
 </div>
 
-<div class="menu-container">
-  <ul class="difficulty-categories">
-    <li
-      (click)="toggleBegginer()"
-      class="difficulty-category"
-      style="text-decoration: none; color: white"
-    >
-      Begginer
-    </li>
-    <div *ngIf="showBegginer">
-      <li class="lesson" *ngFor="let lesson of lessons">
-        <a
-          [routerLink]="lesson.url"
-          style="text-decoration: none; color: white"
-        >
-          <div class="lesson-icon">
-            <mat-icon>{{ lesson.icon }}</mat-icon>
-          </div>
-          <div class="lesson-name">
-            {{ lesson.title }}
-          </div>
-        </a>
+<div class="content-container">
+  <div class="menu-container">
+    <ul class="difficulty-categories">
+      <li
+        class="difficulty-category"
+        style="text-decoration: none; color: white"
+      >
+        Beginner
       </li>
-    </div>
-  </ul>
-</div>
+      <div *ngIf="!showBegginer">
+        <li class="lesson" *ngFor="let lesson of lessonsBegginer">
+          <a
+            [routerLink]="lesson.url"
+            style="text-decoration: none; color: white"
+          >
+            <div class="lesson-name">
+              {{ lesson.title }}
+            </div>
+          </a>
+        </li>
+      </div>
+      <li
+        class="difficulty-category"
+        style="text-decoration: none; color: white"
+      >
+        Intermediate
+      </li>
+      <div *ngIf="!showIntermediate">
+        <li class="lesson" *ngFor="let lesson of lessonsIntermediate">
+          <a
+            [routerLink]="lesson.url"
+            style="text-decoration: none; color: white"
+          >
+            <div class="lesson-name">
+              {{ lesson.title }}
+            </div>
+          </a>
+        </li>
+      </div>
+      <li
+        class="difficulty-category"
+        style="text-decoration: none; color: white"
+      >
+        Advanced
+      </li>
+      <div *ngIf="!showAdvanced">
+        <li class="lesson" *ngFor="let lesson of lessonsAdvanced">
+          <a
+            [routerLink]="lesson.url"
+            style="text-decoration: none; color: white"
+          >
+            <div class="lesson-name">
+              {{ lesson.title }}
+            </div>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </div>
 
-<div class="table-container">
-  <table class="translation-table">
-    <tr *ngFor="let slide of slides">
-      <td class="native">
-        {{ slide.native }}
-      </td>
-      <td class="translation">
-        {{ slide.translation }}
-      </td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table class="translation-table">
+      <tr *ngFor="let slide of slides">
+        <td class="native">
+          {{ slide.native }}
+        </td>
+        <td class="translation">
+          {{ slide.translation }}
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

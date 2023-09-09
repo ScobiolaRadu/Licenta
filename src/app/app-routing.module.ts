@@ -62,19 +62,11 @@ const routes: Routes = [
     component: LessonComponent,
     ...canActivate(redirectToLogin),
   },
-
-  {
-    path: 'test',
-    component: TestComponent,
-    ...canActivate(redirectToLogin),
-  },
-
   {
     path: 'password-reset',
     component: PasswordResetComponent,
     ...canActivate(redirectToHome),
   },
-
   {
     path: 'settings',
     component: SettingsComponent,
@@ -88,6 +80,21 @@ const routes: Routes = [
   {
     path: 'tests',
     component: TestlistComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'tests/begginer',
+    component: TestComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'tests/intermediate',
+    component: TestComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'tests/advanced',
+    component: TestComponent,
     ...canActivate(redirectToLogin),
   },
 ];

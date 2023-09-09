@@ -12,7 +12,9 @@ export class LessonComponent implements OnInit {
   lessonTitle = '';
   slides: any[] = [];
   currentSlideIndex = 0;
-  lessons: any[] = [];
+  lessonsBegginer: any[] = [];
+  lessonsIntermediate: any[] = [];
+  lessonsAdvanced: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,16 +29,27 @@ export class LessonComponent implements OnInit {
   }
 
   showBegginer = false;
-
   toggleBegginer() {
     this.showBegginer = !this.showBegginer;
+  }
+
+  showIntermediate = false;
+  toggleIntermediate() {
+    this.showIntermediate = !this.showIntermediate;
+  }
+
+  showAdvanced = false;
+  toggleAdvanced() {
+    this.showAdvanced = !this.showAdvanced;
   }
 
   ngOnInit() {
     const urlSegments = this.route.snapshot.url;
     this.lessonTitle = urlSegments[urlSegments.length - 1].path;
 
-    this.lessons = this.lessonService.getLessons();
+    this.lessonsBegginer = this.lessonService.getLessonsBegginer();
+    this.lessonsIntermediate = this.lessonService.getLessonsIntermediate();
+    this.lessonsAdvanced = this.lessonService.getLessonsAdvanced();
 
     switch (this.lessonTitle) {
       case 'Animals':

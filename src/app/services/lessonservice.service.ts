@@ -10,14 +10,36 @@ export interface Lesson {
   providedIn: 'root',
 })
 export class LessonService {
-  lessons = [
+  lessonsBegginer = [
     { title: 'Animals', icon: 'pets', url: '/lesson/Animals' },
     { title: 'Colors', icon: 'palette', url: '/lesson/Colors' },
     { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
     { title: 'People', icon: 'people', url: '/lesson/People' },
   ];
 
-  getLessons() {
-    return this.lessons;
+  lessonsIntermediate = [
+    { title: 'Animals', icon: 'pets', url: '/lesson/Animals' },
+    { title: 'Colors', icon: 'palette', url: '/lesson/Colors' },
+    { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
+    { title: 'People', icon: 'people', url: '/lesson/People' },
+  ];
+
+  lessonsAdvanced = [
+    { title: 'Animals', icon: 'pets', url: '/lesson/Animals' },
+    { title: 'Colors', icon: 'palette', url: '/lesson/Colors' },
+    { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
+    { title: 'People', icon: 'people', url: '/lesson/People' },
+  ];
+
+  getLessonsBegginer() {
+    return this.lessonsBegginer;
+  }
+
+  getLessonsIntermediate() {
+    return this.lessonsIntermediate;
+  }
+
+  getLessonsAdvanced() {
+    return this.lessonsAdvanced;
   }
 }

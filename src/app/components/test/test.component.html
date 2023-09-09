@@ -1,6 +1,8 @@
 <h2>Test</h2>
 <div>{{ displayText }}</div>
-<input type="text" [(ngModel)]="inputText">
-<button (click)="checkAnswer()">Check</button>
+<input *ngIf="!ended" type="text" [(ngModel)]="inputText" />
+<button *ngIf="!ended" (click)="checkAnswer()">Check</button>
+<div *ngIf="ended">You have scored amount points!</div>
+<button *ngIf="ended" routerLink="/tests">Back to tests</button>
 
-<div [ngStyle]="{'color': color}">{{ message }}</div>
+<div [ngStyle]="{ color: color }">{{ message }}</div>

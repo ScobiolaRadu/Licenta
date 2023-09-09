@@ -7,7 +7,45 @@
     Begginer
   </li>
   <div *ngIf="showBegginer">
-    <li class="lesson" *ngFor="let lesson of lessons">
+    <li class="lesson" *ngFor="let lesson of lessonsBegginer">
+      <a [routerLink]="lesson.url" style="text-decoration: none; color: white">
+        <div class="lesson-icon">
+          <mat-icon>{{ lesson.icon }}</mat-icon>
+        </div>
+        <div class="lesson-name">
+          {{ lesson.title }}
+        </div>
+      </a>
+    </li>
+  </div>
+  <li
+    (click)="toggleIntermediate()"
+    class="lesson-category"
+    style="text-decoration: none; color: white"
+  >
+    Intermediate
+  </li>
+  <div *ngIf="showIntermediate">
+    <li class="lesson" *ngFor="let lesson of lessonsIntermediate">
+      <a [routerLink]="lesson.url" style="text-decoration: none; color: white">
+        <div class="lesson-icon">
+          <mat-icon>{{ lesson.icon }}</mat-icon>
+        </div>
+        <div class="lesson-name">
+          {{ lesson.title }}
+        </div>
+      </a>
+    </li>
+  </div>
+  <li
+    (click)="toggleAdvanced()"
+    class="lesson-category"
+    style="text-decoration: none; color: white"
+  >
+    Advanced
+  </li>
+  <div *ngIf="showAdvanced">
+    <li class="lesson" *ngFor="let lesson of lessonsAdvanced">
       <a [routerLink]="lesson.url" style="text-decoration: none; color: white">
         <div class="lesson-icon">
           <mat-icon>{{ lesson.icon }}</mat-icon>

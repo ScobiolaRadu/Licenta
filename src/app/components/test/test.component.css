@@ -40,3 +40,7 @@ div {
   display: block;
   text-align: center;
 }
+
+button:hover {
+  cursor: pointer;
+}
