@@ -1,5 +1,23 @@
 {
   "Learning materials": "Ressources didactiques",
   "Tests": "Tests",
-  "Leaderboard": "Classement"
+  "Leaderboard": "Classement",
+  "Welcome": "Bienvenue",
+  "Profile": "Profil",
+  "Logout": "Déconnexion",
+  "User Profile": "Profil Utilisateur",
+  "Upload": "Envoyer",
+  "Change Password": "Changer le Mot de Passe",
+  "Pick Native Language": "Choisir la Langue Maternelle",
+  "Pick Language to Learn": "Choisir la Langue à Apprendre",
+  "Points accumulated": "Points accumulés",
+  "English": "Anglais",
+  "French": "Français",
+  "Romanian": "Roumain",
+  "Save": "Sauvegarder",
+  "Beginner": "Débutant",
+  "Intermediate": "Intermédiaire",
+  "Advanced": "Avancé",
+  "Account Name": "Nom du Compte",
+  "Points": "Points"
 }

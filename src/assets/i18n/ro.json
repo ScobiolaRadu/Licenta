@@ -1,5 +1,23 @@
 {
   "Learning materials": "Materiale pentru învățare",
   "Tests": "Teste",
-  "Leaderboard": "Clasament"
+  "Leaderboard": "Clasament",
+  "Welcome": "Bine ai venit",
+  "Profile": "Profil",
+  "Logout": "Deconectare",
+  "User Profile": "Profil Utilizator",
+  "Upload": "Încarcă",
+  "Change Password": "Schimbă Parola",
+  "Pick Native Language": "Alege Limba Maternă",
+  "Pick Language to Learn": "Alege Limba de Învățat",
+  "Points accumulated": "Puncte acumulate",
+  "English": "Engleză",
+  "Romanian": "Română",
+  "French": "Franceză",
+  "Save": "Salvează",
+  "Beginner": "Începător",
+  "Intermediate": "Intermediar",
+  "Advanced": "Avansat",
+  "Account Name": "Nume Cont",
+  "Points": "Puncte"
 }

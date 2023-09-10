@@ -11,24 +11,62 @@ export interface Lesson {
 })
 export class LessonService {
   lessonsBegginer = [
-    { title: 'Animals', icon: 'pets', url: '/lesson/Animals' },
-    { title: 'Colors', icon: 'palette', url: '/lesson/Colors' },
+    { title: 'Greetings', icon: 'forum', url: '/lesson/Greetings' },
     { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
     { title: 'People', icon: 'people', url: '/lesson/People' },
+    { title: 'Common Phrases', icon: 'chat', url: '/lesson/CommonPhrases' },
+    {
+      title: 'Foods and Drinks',
+      icon: 'fastfood',
+      url: '/lesson/FoodsAndDrinks',
+    },
+    {
+      title: 'Simple Present Tense',
+      icon: 'list_alt',
+      url: '/lesson/SimplePresentTense',
+    },
+    {
+      title: 'Shopping and Money',
+      icon: 'shopping_cart',
+      url: '/lesson/ShoppingAndMoney',
+    },
   ];
 
   lessonsIntermediate = [
-    { title: 'Animals', icon: 'pets', url: '/lesson/Animals' },
-    { title: 'Colors', icon: 'palette', url: '/lesson/Colors' },
-    { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
-    { title: 'People', icon: 'people', url: '/lesson/People' },
+    { title: 'Grammar Rules', icon: 'assignment', url: '/lesson/GrammarRules' },
+    {
+      title: 'Expanded Vocabulary',
+      icon: 'library_books',
+      url: '/lesson/ExpandedVocabulary',
+    },
+    {
+      title: 'Intermediate Verb Tenses',
+      icon: 'history_edu',
+      url: '/lesson/IntermediateVerbTenses',
+    },
+    {
+      title: 'Conditional Sentences',
+      icon: 'call_split',
+      url: '/lesson/ConditionalSentences',
+    },
   ];
 
   lessonsAdvanced = [
-    { title: 'Animals', icon: 'pets', url: '/lesson/Animals' },
-    { title: 'Colors', icon: 'palette', url: '/lesson/Colors' },
-    { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
-    { title: 'People', icon: 'people', url: '/lesson/People' },
+    {
+      title: 'Advanced Vocabulary',
+      icon: 'library_books',
+      url: '/lesson/AdvancedVocabulary',
+    },
+    {
+      title: 'Complex Grammar',
+      icon: 'assignment',
+      url: '/lesson/ComplexGrammar',
+    },
+    {
+      title: 'Advanced Verb Forms',
+      icon: 'history_edu',
+      url: '/lesson/AdvancedVerbForms',
+    },
   ];
 
   getLessonsBegginer() {

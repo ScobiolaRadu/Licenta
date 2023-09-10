@@ -1,5 +1,23 @@
 {
   "Learning materials": "Learning materials",
   "Tests": "Tests",
-  "Leaderboard": "Leaderboard"
+  "Leaderboard": "Leaderboard",
+  "Welcome": "Welcome",
+  "Profile": "Profile",
+  "Logout": "Logout",
+  "User Profile": "User Profile",
+  "Upload": "Upload",
+  "Change Password": "Change Password",
+  "Pick Native Language": "Pick Native Language",
+  "Pick Language to Learn": "Pick Language to Learn",
+  "Points accumulated": "Points accumulated",
+  "English": "English",
+  "French": "French",
+  "Romanian": "Romanian",
+  "Save": "Save",
+  "Beginer": "Beginner",
+  "Intermediate": "Intermediate",
+  "Advanced": "Advanced",
+  "Account Name": "Account Name",
+  "Points": "Points"
 }

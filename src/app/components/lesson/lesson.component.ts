@@ -52,14 +52,6 @@ export class LessonComponent implements OnInit {
     this.lessonsAdvanced = this.lessonService.getLessonsAdvanced();
 
     switch (this.lessonTitle) {
-      case 'Animals':
-        this.slides = [
-          { native: 'Lion', translation: 'Leu' },
-          { native: 'Dog', translation: 'Câine' },
-          { native: 'Elephant', translation: 'Elefant' },
-          { native: 'Pig', translation: 'Porc' },
-        ];
-        break;
       case 'Colors':
         this.slides = [
           { native: 'Red', translation: 'Roșu' },

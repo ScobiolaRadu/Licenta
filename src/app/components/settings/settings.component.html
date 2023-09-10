@@ -1,5 +1,5 @@
 <div class="form-container mat-elevation-z5 text-center">
-  <h1>User Profile</h1>
+  <h1>{{ "User Profile" | translate }}</h1>
   <div class="profile-image">
     <img
       width="120"
@@ -14,19 +14,19 @@
 
   <div class="options">
     <button mat-raised-button color="primary" (click)="onUploadButtonClick()">
-      Upload
+      {{ "Upload" | translate }}
     </button>
 
     <button mat-raised-button color="primary" (click)="changePassword()">
-      Change Password
+      {{ "Change Password" | translate }}
     </button>
   </div>
 
-  <div>Pick Native Language</div>
+  <div>{{ "Pick Native Language" | translate }}</div>
   <select [(ngModel)]="newNativeLanguage">
-    <option value="English">English</option>
-    <option value="French">French</option>
-    <option value="Romanian">Romanian</option>
+    <option value="English">{{ "English" | translate }}</option>
+    <option value="French">{{ "French" | translate }}</option>
+    <option value="Romanian">{{ "Romanian" | translate }}</option>
   </select>
   <button
     class="save"
@@ -34,16 +34,16 @@
     color="primary"
     (click)="changeNativeLanguage()"
   >
-    Save
+    {{ "Save" | translate }}
   </button>
 
-  <div>Pick Language to Learn</div>
+  <div>{{ "Pick Language to Learn" | translate }}</div>
   <select [(ngModel)]="newLanguageToLearn">
     <option value=""></option>
     <!-- Empty option to represent no language selected -->
-    <option value="English">English</option>
-    <option value="French">French</option>
-    <option value="Romanian">Romanian</option>
+    <option value="English">{{ "English" | translate }}</option>
+    <option value="French">{{ "French" | translate }}</option>
+    <option value="Romanian">{{ "Romanian" | translate }}</option>
   </select>
   <button
     class="save"
@@ -51,7 +51,7 @@
     color="primary"
     (click)="changeLanguageToLearn()"
   >
-    Save
+    {{ "Save" | translate }}
   </button>
-  <div>Points acumulated: {{ points }}</div>
+  <div>{{ "Points acumulated" | translate }}: {{ points }}</div>
 </div>

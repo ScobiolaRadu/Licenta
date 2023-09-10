@@ -1,5 +1,5 @@
 <h1 class="welcome" *ngIf="user$ | async as user">
-  Welcome to Triolingo, {{ user.displayName }}!
+  {{ "Welcome" | translate }}, {{ user.displayName }}!
 </h1>
 <!-- <img class="mascot" src="/assets/mascota2.png"> -->
 <!-- <div class="content">

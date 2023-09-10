@@ -4,7 +4,7 @@
     class="lesson-category"
     style="text-decoration: none; color: white"
   >
-    Begginer
+    {{ "Beginner" | translate }}
   </li>
   <div *ngIf="showBegginer">
     <li class="lesson" *ngFor="let lesson of lessonsBegginer">
@@ -23,7 +23,7 @@
     class="lesson-category"
     style="text-decoration: none; color: white"
   >
-    Intermediate
+    {{ "Intermediate" | translate }}
   </li>
   <div *ngIf="showIntermediate">
     <li class="lesson" *ngFor="let lesson of lessonsIntermediate">
@@ -42,7 +42,7 @@
     class="lesson-category"
     style="text-decoration: none; color: white"
   >
-    Advanced
+    {{ "Advanced" | translate }}
   </li>
   <div *ngIf="showAdvanced">
     <li class="lesson" *ngFor="let lesson of lessonsAdvanced">

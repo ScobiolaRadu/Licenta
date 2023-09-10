@@ -44,26 +44,6 @@ const routes: Routes = [
     ...canActivate(redirectToLogin),
   },
   {
-    path: 'lesson/Animals',
-    component: LessonComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
-    path: 'lesson/Colors',
-    component: LessonComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
-    path: 'lesson/Numbers',
-    component: LessonComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
-    path: 'lesson/People',
-    component: LessonComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
     path: 'password-reset',
     component: PasswordResetComponent,
     ...canActivate(redirectToHome),
@@ -101,6 +81,76 @@ const routes: Routes = [
   {
     path: 'leaderboard',
     component: LeaderboardComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/Greetings',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/Numbers',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/People',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/CommonPhrases',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/FoodsAndDrinks',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/SimplePresentTense',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/ShoppingAndMoney',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/GrammarRules',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/ExpandedVocabulary',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/IntermediateVerbTenses',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/ConditionalSentences',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/AdvancedVocabulary',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/ComplexGrammar',
+    component: LessonComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'lesson/AdvancedVerbForms',
+    component: LessonComponent,
     ...canActivate(redirectToLogin),
   },
 ];

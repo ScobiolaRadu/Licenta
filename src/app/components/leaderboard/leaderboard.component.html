@@ -3,8 +3,8 @@
     <table *ngIf="user$ | async as user">
       <thead>
         <tr class="table-head">
-          <th>Account Name</th>
-          <th>Points</th>
+          <th>{{ "Account Name" | translate }}</th>
+          <th>{{ "Points" | translate }}</th>
         </tr>
       </thead>
       <tbody>
