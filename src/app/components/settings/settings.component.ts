@@ -62,6 +62,24 @@ export class SettingsComponent {
             break;
         }
       });
+
+    this.storageService
+      .getUserLanguageToLearnByEmail(
+        this.authService.getCurrentUser()?.email || ''
+      )
+      .subscribe((languageToLearn) => {
+        switch (languageToLearn) {
+          case 'en':
+            this.newLanguageToLearn = 'English';
+            break;
+          case 'fr':
+            this.newLanguageToLearn = 'French';
+            break;
+          case 'ro':
+            this.newLanguageToLearn = 'Romanian';
+            break;
+        }
+      });
   }
 
   selectImage(event: any) {
@@ -126,7 +144,6 @@ export class SettingsComponent {
       Romanian: 'ro',
     };
 
-    // Use the TranslationService to change the language
     const selectedLanguageCode = languageMap[this.newNativeLanguage];
     if (selectedLanguageCode) {
       this.translationService.changeLanguage(selectedLanguageCode);
@@ -134,12 +151,24 @@ export class SettingsComponent {
       console.error('Invalid language selection');
     }
 
-    // Update the user's native language in the database
     this.storageService.updateUserNativeLanguageByEmail(
       this.authService.getCurrentUser()?.email || '',
       languageMap[this.newNativeLanguage]
     );
   }
 
-  changeLanguageToLearn() {}
+  changeLanguageToLearn() {
+    const languageMap: { [key: string]: string } = {
+      English: 'en',
+      French: 'fr',
+      Romanian: 'ro',
+    };
+
+    const selectedLanguageCode = languageMap[this.newLanguageToLearn];
+
+    this.storageService.updateUserLanguageToLearnByEmail(
+      this.authService.getCurrentUser()?.email || '',
+      languageMap[this.newLanguageToLearn]
+    );
+  }
 }

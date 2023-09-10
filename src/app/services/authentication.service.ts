@@ -70,6 +70,7 @@ export class AuthenticationService {
       name: name,
       points: 0,
       native: 'en',
+      languageToLearn: 'ro',
     });
     console.log('User added to database');
     return from(

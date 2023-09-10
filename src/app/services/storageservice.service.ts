@@ -9,6 +9,7 @@ interface UserData {
   email: string;
   points: number;
   native: string;
+  languageToLearn: string;
 }
 
 @Injectable({
@@ -41,6 +42,18 @@ export class StorageService {
     );
   }
 
+  getUserLanguageToLearnByEmail(email: string): Observable<string | undefined> {
+    const userRef = this.db.collection('users', (ref) =>
+      ref.where('email', '==', email)
+    );
+    return userRef.snapshotChanges().pipe(
+      map((actions) => {
+        const userData = actions[0]?.payload.doc.data() as UserData;
+        return userData?.languageToLearn;
+      })
+    );
+  }
+
   updateUserPointsByEmail(email: string, newPoints: number): void {
     const userRef = this.db.collection('users').doc(email);
 
@@ -68,6 +81,24 @@ export class StorageService {
       })
       .catch((error) => {
         console.error(`Error updating native language for ${email}:`, error);
+      });
+  }
+
+  updateUserLanguageToLearnByEmail(
+    email: string,
+    newLanguageToLearn: string
+  ): void {
+    const userRef = this.db.collection('users').doc(email);
+
+    userRef
+      .update({
+        languageToLearn: newLanguageToLearn,
+      })
+      .then(() => {
+        console.log(`Language to learn updated for ${email}.`);
+      })
+      .catch((error) => {
+        console.error(`Error updating language to learn for ${email}:`, error);
       });
   }
 }
