@@ -1,8 +1,12 @@
-<h1>Test your knowledge in one of the following categories!</h1>
-
 <ul class="test-container">
-  <li class="test-category" routerLink="begginer">Begginer</li>
-  <li class="test-category" routerLink="intermediate">Intermediate</li>
-  <li class="test-category" routerLink="advanced">Advanced</li>
+  <li class="test-category" routerLink="begginer">
+    {{ "Beginner" | translate }}
+  </li>
+  <li class="test-category" routerLink="intermediate">
+    {{ "Intermediate" | translate }}
+  </li>
+  <li class="test-category" routerLink="advanced">
+    {{ "Advanced" | translate }}
+  </li>
 </ul>
 <router-outlet></router-outlet>

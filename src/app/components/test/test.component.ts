@@ -9,35 +9,9 @@ import { StorageService } from 'src/app/services/storageservice.service';
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit {
-  slidesBegginer: any[] = [
-    { text: 'Lion', text2: 'leu' },
-    { text: 'Elephant', text2: 'elefant' },
-    { text: 'Pig', text2: 'porc' },
-    { text: 'Dog', text2: 'câine' },
-    { text: 'Red', text2: 'roșu' },
-    { text: 'Blue', text2: 'albastru' },
-    { text: 'Green', text2: 'verde' },
-    { text: 'Yellow', text2: 'galben' },
-    { text: 'One', text2: 'unu' },
-    { text: 'Two', text2: 'doi' },
-    { text: 'Three', text2: 'trei' },
-    { text: 'Four', text2: 'patru' },
-    { text: 'Five', text2: 'cinci' },
-    { text: 'Six', text2: 'șase' },
-    { text: 'Seven', text2: 'șapte' },
-    { text: 'Eight', text2: 'opt' },
-    { text: 'Nine', text2: 'nouă' },
-    { text: 'Zero', text2: 'zero' },
-    { text: 'Ten', text2: 'zece' },
-    { text: 'Mother', text2: 'mamă' },
-    { text: 'Father', text2: 'tată' },
-    { text: 'Brother', text2: 'frate' },
-    { text: 'Sister', text2: 'soră' },
-  ];
-
-  slidesIntermediate: any[] = [{ text: 'ceva', text2: 'ceva2' }];
-
-  slidesAdvanced: any[] = [{ text: 'ceva3', text2: 'ceva4' }];
+  slidesBegginer: any[] = [];
+  slidesIntermediate: any[] = [];
+  slidesAdvanced: any[] = [];
 
   displayText: string = '';
   inputText: string = '';
@@ -46,25 +20,87 @@ export class TestComponent implements OnInit {
   currentSlideIndex: number = 0;
   testTitle = '';
   array: any[] = [];
-  testLength: number = 0;
+  testLength: number = 1;
   ended = false;
   points: number = 0;
   previousPoints: number = 0;
+  languageToLearn: string = '';
+  nativeLanguage: string = '';
+  disabled: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private storageService: StorageService,
     private authService: AuthenticationService
-  ) {}
+  ) {
+    authService.currentUser$.subscribe((user) => {
+      if (user) {
+        storageService
+          .getUserLanguageToLearnByEmail(
+            this.authService.getCurrentUser()?.email || ''
+          )
+          .subscribe((languageToLearn) => {
+            this.languageToLearn = languageToLearn || '';
+            this.initTests();
+          });
 
-  randomIndex(array: any[]) {
-    let availableSlides = this.array.filter(
-      (slide) => slide !== this.array[this.currentSlideIndex]
-    );
-    return Math.floor(Math.random() * availableSlides.length);
+        storageService
+          .getUserNativeLanguageByEmail(
+            this.authService.getCurrentUser()?.email || ''
+          )
+          .subscribe((nativeLanguage) => {
+            this.nativeLanguage = nativeLanguage || '';
+          });
+      }
+    });
   }
 
-  ngOnInit() {
+  private initTests() {
+    if (this.languageToLearn === 'ro') {
+      this.slidesBegginer = [];
+    } else if (this.languageToLearn === 'fr') {
+    } else if (this.languageToLearn === 'en') {
+      this.slidesBegginer = [
+        { native: 'Zero', translation: 'Zero' },
+        { native: 'One', translation: 'One' },
+        { native: 'Two', translation: 'Two' },
+        { native: 'Three', translation: 'Three' },
+        { native: 'Four', translation: 'Four' },
+        { native: 'Five', translation: 'Five' },
+        { native: 'Six', translation: 'Six' },
+        { native: 'Seven', translation: 'Seven' },
+        { native: 'Eight', translation: 'Eight' },
+        { native: 'Nine', translation: 'Nine' },
+        { native: 'Ten', translation: 'Ten' },
+        { native: 'Eleven', translation: 'Eleven' },
+        { native: 'Twelve', translation: 'Twelve' },
+        { native: 'Thirteen', translation: 'Thirteen' },
+        { native: 'Fourteen', translation: 'Fourteen' },
+        { native: 'Fifteen', translation: 'Fifteen' },
+        { native: 'Sixteen', translation: 'Sixteen' },
+        { native: 'Seventeen', translation: 'Seventeen' },
+        { native: 'Eighteen', translation: 'Eighteen' },
+        { native: 'Nineteen', translation: 'Nineteen' },
+        { native: 'Twenty', translation: 'Twenty' },
+        { native: 'Twenty-one', translation: 'Twenty-one' },
+        { native: 'Thirty', translation: 'Thirty' },
+        { native: 'Thirty-one', translation: 'Thirty-one' },
+        { native: 'Forty', translation: 'Forty' },
+        { native: 'Forty-one', translation: 'Forty-one' },
+        { native: 'Fifty', translation: 'Fifty' },
+        { native: 'Fifty-one', translation: 'Fifty-one' },
+        { native: 'Sixty', translation: 'Sixty' },
+        { native: 'Sixty-one', translation: 'Sixty-one' },
+        { native: 'Seventy', translation: 'Seventy' },
+        { native: 'Seventy-one', translation: 'Seventy-one' },
+        { native: 'Eighty', translation: 'Eighty' },
+        { native: 'Eighty-one', translation: 'Eighty-one' },
+        { native: 'Ninety', translation: 'Ninety' },
+        { native: 'Ninety-one', translation: 'Ninety-one' },
+        { native: 'One hundred', translation: 'One hundred' },
+      ];
+    }
+
     const urlSegments = this.route.snapshot.url;
     this.testTitle = urlSegments[urlSegments.length - 1].path;
 
@@ -87,30 +123,41 @@ export class TestComponent implements OnInit {
       });
   }
 
+  randomIndex(array: any[]) {
+    let availableSlides = this.array.filter(
+      (slide) => slide !== this.array[this.currentSlideIndex]
+    );
+    return Math.floor(Math.random() * availableSlides.length);
+  }
+
+  ngOnInit() {}
+
   getRandomSlide(array: any[]) {
     this.currentSlideIndex = this.randomIndex(this.array);
-    this.displayText = this.array[this.currentSlideIndex].text;
+    this.displayText = this.array[this.currentSlideIndex].native;
     this.inputText = '';
     this.message = '';
   }
 
   checkAnswer() {
-    this.testLength++;
-
+    this.disabled = true;
     if (
-      this.inputText.toLowerCase() === this.array[this.currentSlideIndex].text2
+      this.inputText.toLowerCase() ===
+      this.array[this.currentSlideIndex].translation.toLowerCase()
     ) {
       this.color = 'green';
-      this.message = 'Correct';
+      if (this.nativeLanguage === 'en') this.message = 'Correct';
+      else if (this.nativeLanguage === 'fr') this.message = 'Correct';
+      else if (this.nativeLanguage === 'ro') this.message = 'Corect';
       this.points += 10;
       if (this.testLength !== 2)
         setTimeout(() => {
           this.getRandomSlide(this.array);
+          this.disabled = false;
         }, 500);
-      else
+      else {
         setTimeout(() => {
           this.color = '';
-          this.displayText = 'Test ended!';
           this.message = '';
           this.inputText = '';
           this.ended = true;
@@ -119,20 +166,32 @@ export class TestComponent implements OnInit {
             this.points + this.previousPoints
           );
         }, 500);
+      }
     } else {
       this.color = 'red';
-      this.message =
-        'Incorrect, the correct answer was ' +
-        this.array[this.currentSlideIndex].text2 +
-        '.';
+      if (this.nativeLanguage === 'en')
+        this.message =
+          'Incorrect, the correct answer was ' +
+          this.array[this.currentSlideIndex].translation +
+          '.';
+      else if (this.nativeLanguage === 'fr')
+        this.message =
+          'Incorrect, la bonne réponse était ' +
+          this.array[this.currentSlideIndex].translation +
+          '.';
+      else if (this.nativeLanguage === 'ro')
+        this.message =
+          'Incorect, răspunsul corect era ' +
+          this.array[this.currentSlideIndex].translation +
+          '.';
       if (this.testLength !== 2)
         setTimeout(() => {
           this.getRandomSlide(this.array);
+          this.disabled = false;
         }, 2000);
-      else
+      else {
         setTimeout(() => {
           this.color = '';
-          this.displayText = 'Test ended!';
           this.message = '';
           this.inputText = '';
           this.ended = true;
@@ -141,6 +200,9 @@ export class TestComponent implements OnInit {
             this.points + this.previousPoints
           );
         }, 2000);
+      }
     }
+    this.testLength++;
+    if (this.testLength === 3) this.testLength = 2;
   }
 }

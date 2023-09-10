@@ -1,8 +1,15 @@
 <h2>Test</h2>
-<div>{{ displayText }}</div>
+<div *ngIf="!ended">{{ displayText | translate }}</div>
 <input *ngIf="!ended" type="text" [(ngModel)]="inputText" />
-<button *ngIf="!ended" (click)="checkAnswer()">Check</button>
-<div *ngIf="ended">You have scored {{ points }} points!</div>
-<button *ngIf="ended" routerLink="/tests">Back to tests</button>
+<button [disabled]="disabled" *ngIf="!ended" (click)="checkAnswer()">
+  {{ "Check" | translate }}
+</button>
+<div *ngIf="ended">
+  {{ "You have scored" | translate }} {{ points }} {{ "points" | translate }}!
+</div>
+<button *ngIf="ended" routerLink="/tests">
+  {{ "Back to tests" | translate }}
+</button>
 
 <div [ngStyle]="{ color: color }">{{ message }}</div>
+<div *ngIf="!ended">{{ testLength }} / 10</div>

@@ -39,9 +39,15 @@
 
   <div>{{ "Pick Language to Learn" | translate }}</div>
   <select [(ngModel)]="newLanguageToLearn">
-    <option value="English">{{ "English" | translate }}</option>
-    <option value="French">{{ "French" | translate }}</option>
-    <option value="Romanian">{{ "Romanian" | translate }}</option>
+    <option value="English" *ngIf="newNativeLanguage !== 'English'">
+      {{ "English" | translate }}
+    </option>
+    <option value="French" *ngIf="newNativeLanguage !== 'French'">
+      {{ "French" | translate }}
+    </option>
+    <option value="Romanian" *ngIf="newNativeLanguage !== 'Romanian'">
+      {{ "Romanian" | translate }}
+    </option>
   </select>
   <button
     class="save"

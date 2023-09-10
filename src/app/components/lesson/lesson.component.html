@@ -11,7 +11,7 @@
         class="difficulty-category"
         style="text-decoration: none; color: white"
       >
-        Beginner
+        {{ "Beginner" | translate }}
       </li>
       <div *ngIf="!showBegginer">
         <li class="lesson" *ngFor="let lesson of lessonsBegginer">
@@ -20,7 +20,7 @@
             style="text-decoration: none; color: white"
           >
             <div class="lesson-name">
-              {{ lesson.title }}
+              {{ lesson.title | translate }}
             </div>
           </a>
         </li>
@@ -29,7 +29,7 @@
         class="difficulty-category"
         style="text-decoration: none; color: white"
       >
-        Intermediate
+        {{ "Intermediate" | translate }}
       </li>
       <div *ngIf="!showIntermediate">
         <li class="lesson" *ngFor="let lesson of lessonsIntermediate">
@@ -38,7 +38,7 @@
             style="text-decoration: none; color: white"
           >
             <div class="lesson-name">
-              {{ lesson.title }}
+              {{ lesson.title | translate }}
             </div>
           </a>
         </li>
@@ -47,7 +47,7 @@
         class="difficulty-category"
         style="text-decoration: none; color: white"
       >
-        Advanced
+        {{ "Advanced" | translate }}
       </li>
       <div *ngIf="!showAdvanced">
         <li class="lesson" *ngFor="let lesson of lessonsAdvanced">
@@ -56,7 +56,7 @@
             style="text-decoration: none; color: white"
           >
             <div class="lesson-name">
-              {{ lesson.title }}
+              {{ lesson.title | translate }}
             </div>
           </a>
         </li>
@@ -67,6 +67,16 @@
   <div class="table-container">
     <table class="translation-table">
       <tr *ngFor="let slide of slides">
+        <td class="native">
+          {{ slide.native | translate }}
+        </td>
+        <td class="translation">
+          {{ slide.translation }}
+        </td>
+      </tr>
+    </table>
+    <table class="translation-table">
+      <tr *ngFor="let slide of slides2">
         <td class="native">
           {{ slide.native | translate }}
         </td>

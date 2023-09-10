@@ -18,12 +18,14 @@
   justify-content: center;
   width: 60vw;
   margin-right: 5vw;
+  flex-direction: column;
 }
 
 .translation-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .translation-table tr:nth-child(odd) {
