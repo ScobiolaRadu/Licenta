@@ -8,6 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { StorageService } from 'src/app/services/storageservice.service';
+import { TranslationService } from 'src/app/services/translation.service';
 
 @Component({
   selector: 'app-settings',
@@ -16,7 +17,7 @@ import { StorageService } from 'src/app/services/storageservice.service';
 })
 export class SettingsComponent {
   user$ = this.authService.currentUser$;
-  newNativeLanguage: string = 'English';
+  newNativeLanguage: string = '';
   newLanguageToLearn: string = '';
   photoURL: string = '';
   selectedFile: File | null = null;
@@ -34,7 +35,8 @@ export class SettingsComponent {
     private authService: AuthenticationService,
     private imageUploadService: ImageUploadService,
     private toast: HotToastService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private translationService: TranslationService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,23 @@ export class SettingsComponent {
       .getUserPointsByEmail(this.authService.getCurrentUser()?.email || '')
       .subscribe((points) => {
         this.points = points || 0;
+      });
+    this.storageService
+      .getUserNativeLanguageByEmail(
+        this.authService.getCurrentUser()?.email || ''
+      )
+      .subscribe((nativeLanguage) => {
+        switch (nativeLanguage) {
+          case 'en':
+            this.newNativeLanguage = 'English';
+            break;
+          case 'fr':
+            this.newNativeLanguage = 'French';
+            break;
+          case 'ro':
+            this.newNativeLanguage = 'Romanian';
+            break;
+        }
       });
   }
 
@@ -100,7 +119,27 @@ export class SettingsComponent {
     }
   }
 
-  changeNativeLanguage() {}
+  changeNativeLanguage() {
+    const languageMap: { [key: string]: string } = {
+      English: 'en',
+      French: 'fr',
+      Romanian: 'ro',
+    };
+
+    // Use the TranslationService to change the language
+    const selectedLanguageCode = languageMap[this.newNativeLanguage];
+    if (selectedLanguageCode) {
+      this.translationService.changeLanguage(selectedLanguageCode);
+    } else {
+      console.error('Invalid language selection');
+    }
+
+    // Update the user's native language in the database
+    this.storageService.updateUserNativeLanguageByEmail(
+      this.authService.getCurrentUser()?.email || '',
+      languageMap[this.newNativeLanguage]
+    );
+  }
 
   changeLanguageToLearn() {}
 }

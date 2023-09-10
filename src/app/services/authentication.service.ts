@@ -69,6 +69,7 @@ export class AuthenticationService {
       email: email,
       name: name,
       points: 0,
+      native: 'en',
     });
     console.log('User added to database');
     return from(

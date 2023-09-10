@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 interface UserData {
   email: string;
   points: number;
-  // Add other fields as needed
+  native: string;
 }
 
 @Injectable({
@@ -29,6 +29,18 @@ export class StorageService {
     );
   }
 
+  getUserNativeLanguageByEmail(email: string): Observable<string | undefined> {
+    const userRef = this.db.collection('users', (ref) =>
+      ref.where('email', '==', email)
+    );
+    return userRef.snapshotChanges().pipe(
+      map((actions) => {
+        const userData = actions[0]?.payload.doc.data() as UserData;
+        return userData?.native;
+      })
+    );
+  }
+
   updateUserPointsByEmail(email: string, newPoints: number): void {
     const userRef = this.db.collection('users').doc(email);
 
@@ -41,6 +53,21 @@ export class StorageService {
       })
       .catch((error) => {
         console.error(`Error updating points for ${email}:`, error);
+      });
+  }
+
+  updateUserNativeLanguageByEmail(email: string, newNative: string): void {
+    const userRef = this.db.collection('users').doc(email);
+
+    userRef
+      .update({
+        native: newNative,
+      })
+      .then(() => {
+        console.log(`Native language updated for ${email}.`);
+      })
+      .catch((error) => {
+        console.error(`Error updating native language for ${email}:`, error);
       });
   }
 }

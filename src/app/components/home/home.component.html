@@ -8,11 +8,13 @@
 
 <div class="content">
   <button mat-raised-button color="primary" routerLink="/lessons">
-    Learning materials
+    {{ "Learning materials" | translate }}
   </button>
-  <button mat-raised-button color="primary" routerLink="/tests">Tests</button>
+  <button mat-raised-button color="primary" routerLink="/tests">
+    {{ "Tests" | translate }}
+  </button>
   <button mat-raised-button color="primary" routerLink="/leaderboard">
-    Leaderboard
+    {{ "Leaderboard" | translate }}
   </button>
 </div>
 <!-- <app-lessonlist></app-lessonlist> -->
