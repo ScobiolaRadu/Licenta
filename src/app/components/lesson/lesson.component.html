@@ -1,6 +1,6 @@
 <div class="lesson-container">
   <div class="lesson-header">
-    {{ lessonTitle }}
+    {{ lessonTitle | translate }}
   </div>
 </div>
 
@@ -75,8 +75,38 @@
         </td>
       </tr>
     </table>
-    <table class="translation-table">
+    <table *ngIf="slides2.length > 0" class="translation-table">
       <tr *ngFor="let slide of slides2">
+        <td class="native">
+          {{ slide.native | translate }}
+        </td>
+        <td class="translation">
+          {{ slide.translation }}
+        </td>
+      </tr>
+    </table>
+    <table *ngIf="slides3.length > 0" class="translation-table">
+      <tr *ngFor="let slide of slides3">
+        <td class="native">
+          {{ slide.native | translate }}
+        </td>
+        <td class="translation">
+          {{ slide.translation }}
+        </td>
+      </tr>
+    </table>
+    <table *ngIf="slides4.length > 0" class="translation-table">
+      <tr *ngFor="let slide of slides4">
+        <td class="native">
+          {{ slide.native | translate }}
+        </td>
+        <td class="translation">
+          {{ slide.translation }}
+        </td>
+      </tr>
+    </table>
+    <table *ngIf="slides5.length > 0" class="translation-table">
+      <tr *ngFor="let slide of slides5">
         <td class="native">
           {{ slide.native | translate }}
         </td>

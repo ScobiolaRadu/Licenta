@@ -14,40 +14,39 @@ export class LessonService {
     { title: 'Greetings', icon: 'forum', url: '/lesson/Greetings' },
     { title: 'Numbers', icon: 'numbers', url: '/lesson/Numbers' },
     { title: 'People', icon: 'people', url: '/lesson/People' },
-    { title: 'Common Phrases', icon: 'chat', url: '/lesson/CommonPhrases' },
+    { title: 'Common Phrases', icon: 'chat', url: '/lesson/Common Phrases' },
     {
       title: 'Foods and Drinks',
       icon: 'fastfood',
-      url: '/lesson/FoodsAndDrinks',
+      url: '/lesson/Foods and Drinks',
     },
     {
       title: 'Simple Present Tense',
       icon: 'list_alt',
-      url: '/lesson/SimplePresentTense',
+      url: '/lesson/Simple Present Tense',
     },
     {
       title: 'Shopping and Money',
       icon: 'shopping_cart',
-      url: '/lesson/ShoppingAndMoney',
+      url: '/lesson/Shopping and Money',
     },
   ];
 
   lessonsIntermediate = [
-    { title: 'Grammar Rules', icon: 'assignment', url: '/lesson/GrammarRules' },
     {
       title: 'Expanded Vocabulary',
       icon: 'library_books',
-      url: '/lesson/ExpandedVocabulary',
+      url: '/lesson/Expanded Vocabulary',
     },
     {
       title: 'Intermediate Verb Tenses',
       icon: 'history_edu',
-      url: '/lesson/IntermediateVerbTenses',
+      url: '/lesson/Intermediate Verb Tenses',
     },
     {
       title: 'Conditional Sentences',
       icon: 'call_split',
-      url: '/lesson/ConditionalSentences',
+      url: '/lesson/Conditional Sentences',
     },
   ];
 
@@ -55,17 +54,12 @@ export class LessonService {
     {
       title: 'Advanced Vocabulary',
       icon: 'library_books',
-      url: '/lesson/AdvancedVocabulary',
-    },
-    {
-      title: 'Complex Grammar',
-      icon: 'assignment',
-      url: '/lesson/ComplexGrammar',
+      url: '/lesson/Advanced Vocabulary',
     },
     {
       title: 'Advanced Verb Forms',
       icon: 'history_edu',
-      url: '/lesson/AdvancedVerbForms',
+      url: '/lesson/Advanced Verb Forms',
     },
   ];
 

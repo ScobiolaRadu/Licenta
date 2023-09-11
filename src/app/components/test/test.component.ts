@@ -98,6 +98,82 @@ export class TestComponent implements OnInit {
         { native: 'Ninety', translation: 'Ninety' },
         { native: 'Ninety-one', translation: 'Ninety-one' },
         { native: 'One hundred', translation: 'One hundred' },
+        {
+          native: 'I',
+          translation: 'I',
+        },
+        {
+          native: 'You',
+          translation: 'You',
+        },
+        {
+          native: 'He',
+          translation: 'He',
+        },
+        {
+          native: 'She',
+          translation: 'She',
+        },
+        {
+          native: 'We',
+          translation: 'We',
+        },
+        {
+          native: 'You (plural)',
+          translation: 'You (plural)',
+        },
+        {
+          native: 'They',
+          translation: 'They',
+        },
+        {
+          native: 'Mother',
+          translation: 'Mother',
+        },
+        {
+          native: 'Father',
+          translation: 'Father',
+        },
+        {
+          native: 'Sister',
+          translation: 'Sister',
+        },
+        {
+          native: 'Brother',
+          translation: 'Brother',
+        },
+        {
+          native: 'Son',
+          translation: 'Son',
+        },
+        {
+          native: 'Daughter',
+          translation: 'Daughter',
+        },
+        {
+          native: 'Grandmother',
+          translation: 'Grandmother',
+        },
+        {
+          native: 'Grandfather',
+          translation: 'Grandfather',
+        },
+        {
+          native: 'Grandson',
+          translation: 'Grandson',
+        },
+        {
+          native: 'Granddaughter',
+          translation: 'Granddaughter',
+        },
+        {
+          native: 'Aunt',
+          translation: 'Aunt',
+        },
+        {
+          native: 'Uncle',
+          translation: 'Uncle',
+        },
       ];
     }
 
