@@ -1,38 +1,29 @@
-.title{
-    display: block;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding-top: 32px;
-    color: white;
+.background {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
 }
 
-.content{
-    width: 40%;
-    display: block;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding-top: 32px;
-    padding-left: 30%;
-    color: white;
-    font-size: 18px;
-    line-height: 1.5;
+h1 {
+  color: #5c6bc0;
 }
 
-.background{
-    background-image: url(/assets/mountains.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    min-height: 85vh;
-    width: 100%;
+.section {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.logo{
-    display: block;
-    text-align: center;
-    padding-top: 32px;
-    max-height: 10%;
-    max-width: 10%;
-    padding-left: 45%;
+.content {
+  width: 60%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #5c6bc0;
 }

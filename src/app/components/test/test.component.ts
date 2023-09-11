@@ -27,6 +27,7 @@ export class TestComponent implements OnInit {
   languageToLearn: string = '';
   nativeLanguage: string = '';
   disabled: boolean = false;
+  languageToLearnName: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +42,17 @@ export class TestComponent implements OnInit {
           )
           .subscribe((languageToLearn) => {
             this.languageToLearn = languageToLearn || '';
+            switch (this.languageToLearn) {
+              case 'en':
+                this.languageToLearnName = 'English';
+                break;
+              case 'fr':
+                this.languageToLearnName = 'French';
+                break;
+              case 'ro':
+                this.languageToLearnName = 'Romanian';
+                break;
+            }
             this.initTests();
           });
 
@@ -2120,7 +2132,7 @@ export class TestComponent implements OnInit {
       else if (this.nativeLanguage === 'fr') this.message = 'Correct';
       else if (this.nativeLanguage === 'ro') this.message = 'Corect';
       this.points += 10;
-      if (this.testLength !== 2)
+      if (this.testLength !== 10)
         setTimeout(() => {
           this.getRandomSlide(this.array);
           this.disabled = false;
@@ -2141,24 +2153,24 @@ export class TestComponent implements OnInit {
       this.color = 'red';
       if (this.nativeLanguage === 'en')
         this.message =
-          'Incorrect, the correct answer was ' +
+          'Incorrect, the correct answer was "' +
           this.array[this.currentSlideIndex].translation +
-          '.';
+          '"';
       else if (this.nativeLanguage === 'fr')
         this.message =
-          'Incorrect, la bonne réponse était ' +
+          'Incorrect, la bonne réponse était "' +
           this.array[this.currentSlideIndex].translation +
-          '.';
+          '"';
       else if (this.nativeLanguage === 'ro')
         this.message =
-          'Incorect, răspunsul corect era ' +
+          'Incorect, răspunsul corect era "' +
           this.array[this.currentSlideIndex].translation +
-          '.';
-      if (this.testLength !== 2)
+          '"';
+      if (this.testLength !== 10)
         setTimeout(() => {
           this.getRandomSlide(this.array);
           this.disabled = false;
-        }, 2000);
+        }, 4000);
       else {
         setTimeout(() => {
           this.color = '';
@@ -2169,10 +2181,10 @@ export class TestComponent implements OnInit {
             this.authService.getCurrentUser()?.email || '',
             this.points + this.previousPoints
           );
-        }, 2000);
+        }, 4000);
       }
     }
     this.testLength++;
-    if (this.testLength === 3) this.testLength = 2;
+    if (this.testLength === 11) this.testLength = 10;
   }
 }

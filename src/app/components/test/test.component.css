@@ -44,3 +44,78 @@ div {
 button:hover {
   cursor: pointer;
 }
+
+.test-container {
+  text-align: center;
+  margin-top: 32px;
+}
+
+h2 {
+  font-size: 28px;
+  color: #5c6bc0;
+}
+
+.test-text {
+  font-size: 20px;
+  margin-top: 32px;
+}
+
+.test-input {
+  font-size: 20px;
+  padding: 10px;
+  display: block;
+  width: 50%;
+  margin: 20px auto; /* Add more space between text and input field */
+  border: 2px solid #5c6bc0; /* Add a border */
+  border-radius: 4px;
+}
+
+.test-button {
+  margin-top: 32px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #5c6bc0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.test-button:hover {
+  background-color: #4454a1;
+}
+
+.test-result {
+  font-size: 20px;
+  margin-top: 32px;
+  color: #5c6bc0;
+}
+
+.test-back-button {
+  margin-top: 32px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: white;
+  color: #5c6bc0;
+  border: 2px solid #5c6bc0;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.test-back-button:hover {
+  background-color: #5c6bc0;
+  color: white;
+}
+
+.test-message {
+  margin-top: 32px;
+  font-size: 20px;
+  color: #5c6bc0;
+}
+
+.test-progress {
+  margin-top: 32px;
+  font-size: 20px;
+}

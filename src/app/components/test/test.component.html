@@ -1,15 +1,30 @@
-<h2>Test</h2>
-<div *ngIf="!ended">{{ displayText | translate }}</div>
-<input *ngIf="!ended" type="text" [(ngModel)]="inputText" />
-<button [disabled]="disabled" *ngIf="!ended" (click)="checkAnswer()">
-  {{ "Check" | translate }}
-</button>
-<div *ngIf="ended">
-  {{ "You have scored" | translate }} {{ points }} {{ "points" | translate }}!
-</div>
-<button *ngIf="ended" routerLink="/tests">
-  {{ "Back to tests" | translate }}
-</button>
+<div class="test-container">
+  <h2>
+    {{ "Write the translation in" | translate }}
+    {{ languageToLearnName | translate }} {{ "for" | translate }}
+  </h2>
+  <div *ngIf="!ended" class="test-text">{{ displayText | translate }}</div>
+  <input
+    *ngIf="!ended"
+    type="text"
+    [(ngModel)]="inputText"
+    class="test-input"
+  />
+  <button
+    [disabled]="disabled"
+    *ngIf="!ended"
+    (click)="checkAnswer()"
+    class="test-button"
+  >
+    {{ "Check" | translate }}
+  </button>
+  <div *ngIf="ended" class="test-result">
+    {{ "You have scored" | translate }} {{ points }} {{ "points" | translate }}!
+  </div>
+  <button *ngIf="ended" routerLink="/tests" class="test-back-button">
+    {{ "Back to tests" | translate }}
+  </button>
 
-<div [ngStyle]="{ color: color }">{{ message }}</div>
-<div *ngIf="!ended">{{ testLength }} / 10</div>
+  <div [ngStyle]="{ color: color }" class="test-message">{{ message }}</div>
+  <div *ngIf="!ended" class="test-progress">{{ testLength }} / 10</div>
+</div>

@@ -1,31 +1,74 @@
-.profile-image img{
-    border-radius: 100%;
-    object-fit: cover;
-    object-position: center;
+.profile-image img {
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.profile-image{
-    position: relative;
+.profile-image {
+  position: relative;
 }
 
-.profile-image > button{
-    position: absolute;
-    bottom: 10px;
-    right: 25%;
+.profile-image > button {
+  position: absolute;
+  bottom: 10px;
+  right: 25%;
 }
 
-.options{
-    /* display: flex; */
-    /* flex-direction: column; */
-    align-items: center;
-    margin-bottom: 12px;
+.options {
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.options button{
-    margin: 8px;
-    padding: 8px;
+.options button {
+  margin: 8px;
+  padding: 8px;
 }
 
-.save{
-    margin: 8px;
+.save {
+  margin: 8px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  font-size: 16px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #5c6bc0;
+}
+
+button.save {
+  margin: 8px;
+  padding: 8px 20px;
+  background-color: #5c6bc0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button.save:hover {
+  background-color: #4454a1;
+}
+
+button.mat-raised-button {
+  background-color: #5c6bc0;
+  color: white;
+  margin: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button.mat-raised-button:hover {
+  background-color: #4454a1;
 }

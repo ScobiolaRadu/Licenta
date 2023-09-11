@@ -11,12 +11,14 @@
   width: 60vw;
   justify-content: center;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
+.rank,
 .name,
 .points {
   padding: 10px;
@@ -36,18 +38,67 @@ table tr:nth-child(even) {
   background-color: #ffffff !important;
 }
 
+.rank {
+  width: 10%; /* Adjust width for the rank column */
+}
+
 .name {
-  width: 50%;
+  width: 40%; /* Adjust width for the name column */
 }
 
 .points {
-  width: 50%;
+  width: 40%; /* Adjust width for the points column */
 }
 
 .points:last-child {
   border-right: none;
 }
 
+.highlighted {
+  color: #5c6bc0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+table tr {
+  height: 50px; /* Adjust row height as needed */
+}
+
+/* Style column headers */
+.rank-column,
+.name-column,
+.points-column {
+  padding: 10px;
+  text-align: center;
+  background-color: #5c6bc0; /* Match your app's theme */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase; /* Uppercase column names */
+}
+
+/* Style rank, name, and points cells */
+.rank,
+.name,
+.points {
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+/* Alternate row background colors */
+table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Highlighted row color */
 .highlighted {
   color: #5c6bc0;
 }

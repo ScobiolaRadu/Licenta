@@ -3,15 +3,17 @@
     <table *ngIf="user$ | async as user">
       <thead>
         <tr class="table-head">
-          <th>{{ "Account Name" | translate }}</th>
-          <th>{{ "Points" | translate }}</th>
+          <th class="rank-column">#</th>
+          <th class="name-column">{{ "Account Name" | translate }}</th>
+          <th class="points-column">{{ "Points" | translate }}</th>
         </tr>
       </thead>
       <tbody>
         <tr
-          *ngFor="let entry of leaderboardData"
+          *ngFor="let entry of leaderboardData; let i = index"
           [ngClass]="{ highlighted: entry.name === user.displayName }"
         >
+          <td class="rank">{{ i + 1 }}</td>
           <td class="name">{{ entry.name }}</td>
           <td class="points">{{ entry.points }}</td>
         </tr>
